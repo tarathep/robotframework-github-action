@@ -1,14 +1,55 @@
 name: 'Robot Framework'
 description: 'Run Robot Framework tests'
 inputs:
-  robot_tests_dir:
+  image:
+    description: 'custom imagename for execute robot framework'
+    required: true
+    default: 'ppodgorsek/robot-framework'
+  image_version:
+    description: 'custom tag verion image for execute robot framework'
+    required: true
+    default: 'latest'
+  tests_dir:
     description: 'Directory where Robot tests are located in the repository'
     required: true
     default: 'robot_tests'
-  robot_reports_dir:
+  reports_dir:
     description: 'Where will the report from test be saved'
     required: true
     default: 'reports'
+  allowed_shared_memory:
+    description: 'Shared memory that Docker container is allowed to use'
+    required: true
+    default: '1g'
+  browser:
+    description: 'Browser to use'
+    required: true
+    default: 'chrome'
+  robot_threads:
+    description: 'Execute tests in parallel'
+    required: true
+    default: 1
+  pabot_options:
+    description: 'Extra settings for parallel execution. https://github.com/mkorpela/pabot#command-line-options'
+    required: true
+    default: ''
+  robot_options:
+    description: 'Extra options for robot command'
+    required: true
+    default: ''
+  screen_color_depth:
+    description: 'Color depth of the virtual screen'
+    required: true
+    default: 24
+  screen_height:
+    description: 'Height of the virtual screen'
+    required: true
+    default: 1080
+  screen_width:
+    description: 'Width of the virtual screen'
+    required: true
+    default: 1920
+  timezone:
 
 runs:
   using: 'composite'
@@ -19,5 +60,15 @@ runs:
     - shell: bash
       run: ${{ github.action_path }}/execute.sh
       env:
-        ROBOT_TESTS_DIR: ${{ inputs.robot_tests_dir }}
-        ROBOT_REPORTS_DIR: ${{ inputs.robot_reports_dir }}
+        IMAGE: ${{ inputs.image }}
+        IMAGE_VERSION: ${{ inputs.image_version }}
+        TESTS_DIR: ${{ inputs.tests_dir }}
+        REPORTS_DIR: ${{ inputs.reports_dir }}
+        ALLOWED_SHARED_MEMORY: ${{ inputs.allowed_shared_memory }}
+        BROWSER: ${{ inputs.browser }}
+        ROBOT_THREADS: ${{ inputs.robot_threads }}
+        PABOT_OPTIONS: ${{ inputs.pabot_options }}
+        ROBOT_OPTIONS: ${{ inputs.robot_options }}
+        SCREEN_COLOR_DEPTH: ${{ inputs.screen_color_depth }}
+        SCREEN_HEIGHT: ${{ inputs.screen_height }}
+        SCREEN_WIDTH: ${{ inputs.screen_width }}

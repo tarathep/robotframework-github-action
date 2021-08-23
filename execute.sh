@@ -1,14 +1,13 @@
-REPORTS_DIR=$ROBOT_REPORTS_DIR
-TESTS_DIR=$ROBOT_TESTS_DIR
-sudo chmod 777 $REPORTS_DIR
-sudo chmod 777 $TESTS_DIR
-
-# REPORTS_DIR=/mnt/c/Users/bokee/cdc/robotframework-github-action/test
-# TESTS_DIR=/mnt/c/Users/bokee/cdc/robotframework-github-action/test
-
+sudo mkdir $REPORTS_DIR && sudo chmod 777 $REPORTS_DIR
 docker run \
+ -shm-size=$ALLOWED_SHARED_MEMORY \
+ -e BROWSER=$BROWSER \
+ -e ROBOT_THREADS=$ROBOT_THREADS \
+ -e PABOT_OPTIONS=$PABOT_OPTIONS \
+ -e ROBOT_OPTIONS=$ROBOT_OPTIONS \
+ -e SCREEN_COLOR_DEPTH=$SCREEN_COLOR_DEPTH \
+ -e SCREEN_HEIGHT=$SCREEN_HEIGHT \
+ -e SCREEN_WIDTH=$SCREEN_WIDTH \
  -v $REPORTS_DIR:/opt/robotframework/reports:Z \
  -v $TESTS_DIR:/opt/robotframework/tests:Z \
- ppodgorsek/robot-framework:latest
-
-#  /mnt/c/Users/bokee/cdc/robotframework-github-action/robot
+ $IMAGE:$IMAGE_VERSION
