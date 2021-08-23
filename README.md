@@ -1,4 +1,4 @@
-# Robot Framework GitHub Aaction
+# Robot Framework GitHub Action
 Github action can be used to run Robot Framework tests.
 
 using https://hub.docker.com/r/ppodgorsek/robot-framework for base image.
@@ -42,7 +42,7 @@ jobs:
 
 Custom image in dependencies at Dockerfile and push image to DockerHub
 
-```docker
+```dockerfile
 FROM ppodgorsek/robot-framework:latest
 RUN pip install <lib>
 RUN execute sh ..
