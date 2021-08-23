@@ -1,5 +1,7 @@
 REPORTS_DIR=$ROBOT_REPORTS_DIR
 TESTS_DIR=$ROBOT_TESTS_DIR
+sudo chmod 777 $REPORTS_DIR
+sudo chmod 777 $TESTS_DIR
 
 # REPORTS_DIR=/mnt/c/Users/bokee/cdc/robotframework-github-action/test
 # TESTS_DIR=/mnt/c/Users/bokee/cdc/robotframework-github-action/test
