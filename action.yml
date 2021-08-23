@@ -1,0 +1,20 @@
+name: 'Robot Framework'
+description: 'Run Robot Framework tests'
+inputs:
+  robot_tests_dir:
+    description: 'Directory where Robot tests are located in the repository'
+    required: true
+    default: 'robot_tests'
+  robot_reports_dir:
+    description: 'Where will the report from test be saved'
+    required: true
+    default: 'reports'
+
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: ${{ github.action_path }}/execute.sh
+      env:
+        ROBOT_TESTS_DIR: ${{ inputs.robot_tests_dir }}
+        ROBOT_REPORTS_DIR: ${{ inputs.robot_reports_dir }}
