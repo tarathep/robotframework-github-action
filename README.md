@@ -40,7 +40,28 @@ jobs:
         reports_dir: '${{ github.workspace }}/tests/robot/reports'
 ```
 
+Custom image in dependencies at Dockerfile and push image to DockerHub
 
+```docker
+FROM ppodgorsek/robot-framework:latest
+RUN pip install <lib>
+RUN execute sh ..
+```
+
+Example run with Custom image
+
+```yaml
+jobs:
+  robot_test:
+    runs-on: ubuntu-latest
+    - name: Robot Framework
+      uses: tarathep/robotframework-github-action@v0.1.7
+      with:
+        image: kietara/robot-framework
+        image_version: 1.0
+        tests_dir: '${{ github.workspace }}/tests/robot'
+        reports_dir: '${{ github.workspace }}/tests/robot/reports'
+```
 
 
 ## Configurations
