@@ -14,6 +14,9 @@ runs:
   using: 'composite'
   steps:
     - shell: bash
+      run: chmod 777 ${{ github.action_path }}/execute.sh
+    
+    - shell: bash
       run: ${{ github.action_path }}/execute.sh
       env:
         ROBOT_TESTS_DIR: ${{ inputs.robot_tests_dir }}
