@@ -1,5 +1,8 @@
 name: 'Robot Framework Action'
 description: 'Run Automate test with Robot Framework on Github Action'
+branding:
+  icon: 'play'  
+  color: 'green'
 inputs:
   image:
     description: 'custom imagename for execute robot framework'
