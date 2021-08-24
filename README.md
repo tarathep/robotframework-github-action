@@ -34,7 +34,7 @@ jobs:
   robot_test:
     runs-on: ubuntu-latest
     - name: Robot Framework
-      uses: tarathep/robotframework-github-action@v0.1.7
+      uses: tarathep/robotframework-github-action@v1.0
       with:
         tests_dir: '${{ github.workspace }}/tests/robot'
         reports_dir: '${{ github.workspace }}/tests/robot/reports'
@@ -55,7 +55,7 @@ jobs:
   robot_test:
     runs-on: ubuntu-latest
     - name: Robot Framework
-      uses: tarathep/robotframework-github-action@v0.1.7
+      uses: tarathep/robotframework-github-action@v1.0
       with:
         image: kietara/robot-framework
         image_version: 1.0
