@@ -1,5 +1,5 @@
-name: 'Robot Framework'
-description: 'Run Robot Framework tests'
+name: 'Robot Framework Action'
+description: 'Run Automate test with Robot Framework on Github Action'
 inputs:
   image:
     description: 'custom imagename for execute robot framework'
